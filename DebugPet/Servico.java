@@ -1,5 +1,3 @@
-package DebugPet;
-
 public class Servico {
     private Pet pet;
     private String descricao;
