@@ -1,3 +1,5 @@
+package DebugPet;
+
 import java.util.ArrayList;
 
 public class Tutor extends Pessoa {

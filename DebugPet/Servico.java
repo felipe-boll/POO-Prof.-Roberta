@@ -1,13 +1,20 @@
+package DebugPet;
+
+import java.time.LocalDate;
+
 public class Servico {
     private Pet pet;
     private String descricao;
     private double valor;
-    private String data;
-    // Colocar Local Date
+    private LocalDate data;
 
-    public Servico(){
+
+    public Servico(Pet pet, String descricao, double valor, LocalDate data) {
+        this.pet = pet;
+        this.descricao = descricao;
+        this.valor = valor;
+        this.data = data;
     }
-    // Criar Construtor De Servicos, Passando Serviços Basicos
 
     public Pet getPet() {
         return pet;
@@ -33,11 +40,12 @@ public class Servico {
         this.valor = valor;
     }
 
-    public String getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
+
 }

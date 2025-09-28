@@ -1,5 +1,8 @@
+package DebugPet;
+
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.time.LocalDate;
 
 public class Main {
     private static ArrayList<Tutor> tutores = new ArrayList<>();
@@ -21,7 +24,7 @@ public class Main {
         System.out.print("Idade: ");
         int idade = scanner.nextInt();
         scanner.nextLine();
-        System.out.print("Endereço(Bairro, Rua, Número): ");
+        System.out.print("Endereço(Bairro, Rua Número): ");
         String endereco = scanner.nextLine();
 
         Tutor tutor = new Tutor(nome, cpf, email, telefone, idade, endereco, new ArrayList<>(), new ArrayList<>());
@@ -87,17 +90,25 @@ public class Main {
         }
     }
 
+    private static void servicosBasicos(){
+        servicos.add(new Servico(null, "Banho", 50.0, LocalDate.now()));
+        servicos.add(new Servico(null, "Tosa", 70.0, LocalDate.now()));
+        servicos.add(new Servico(null, "Banho e Tosa", 100.0, LocalDate.now()));
+        servicos.add(new Servico(null, "Castração", 150.0, LocalDate.now()));
+        servicos.add(new Servico(null, "Vacinação", 80.0, LocalDate.now()));
+        servicos.add(new Servico(null, "Consulta", 120.0, LocalDate.now()));
+    }
+
     private static void cadastrarServico() {
-        limparTela();
+        limparTela();    
         System.out.println("\n=== Cadastro de Serviço ===");
-        Servico servico = new Servico();
-        System.out.print("Descrição: ");
-        servico.setDescricao(scanner.nextLine());
-        System.out.print("Valor: ");
-        servico.setValor(scanner.nextDouble());
+        System.out.print("Descrição do serviço: ");
+        String descricao = scanner.nextLine();
+        System.out.print("Valor do serviço: ");
+        double valor = scanner.nextDouble();
         scanner.nextLine();
-        servicos.add(servico);
-        System.out.println("Serviço cadastrado com sucesso!");
+
+        servicos.add(new Servico(null, descricao, valor, LocalDate.now()));
     }
 
     private static void listarTutores() {
@@ -230,8 +241,18 @@ public class Main {
         servico.setPet(pet);
         pet.getTutor().addServico(servico);
 
-        System.out.print("Informe a data para agendar: ");
-        servico.setData(scanner.nextLine());
+        System.out.print("Informe a data para agendar (formato: dd/mm/aaaa): ");
+        String dataStr = scanner.nextLine();
+        try {
+            String[] partes = dataStr.split("/");
+            int dia = Integer.parseInt(partes[0]);
+            int mes = Integer.parseInt(partes[1]);
+            int ano = Integer.parseInt(partes[2]);
+            servico.setData(LocalDate.of(ano, mes, dia));
+        } catch (Exception e) {
+            System.out.println("Data inválida! O serviço será agendado para hoje.");
+            servico.setData(LocalDate.now());
+        }
 
         System.out.println("Serviço agendado com sucesso!");
     }
@@ -260,6 +281,7 @@ public class Main {
 
     public static void main(String[] args) {
         int opcao;
+        servicosBasicos();
         do {
             mensagemInicial();
 
