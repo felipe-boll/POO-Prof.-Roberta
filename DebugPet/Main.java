@@ -1,5 +1,3 @@
-package DebugPet;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,49 +7,7 @@ public class Main {
     private static ArrayList<Servico> servicos = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
-        int opcao;
-        do {
-            mensagemInicial();
-
-            opcao = scanner.nextInt();
-            scanner.nextLine();
-
-            switch (opcao) {
-                case 1:
-                    cadastrarTutor();
-                    break;
-                case 2:
-                    cadastrarPet();
-                    break;
-                case 3:
-                    cadastrarServico();
-                    break;
-                case 4:
-                    listarTutores();
-                    break;
-                case 5:
-                    listarPets();
-                    break;
-                case 6:
-                    limparTela();
-                    listarServicos();
-                    break;
-                case 7:
-                    agendarServico();
-                    break;
-                case 0:
-                    System.out.println("Obrigado por utilizar nosso sistema!");
-                    break;
-                default:
-                    System.out.println("Opção inválida!");
-            }
-        } while (opcao != 0);
-        
-        scanner.close();
-    }
-
-    private static void cadastrarTutor() {
+     private static void cadastrarTutor() {
         limparTela();
         System.out.println("\n=== Cadastro de Tutor ===");
         System.out.print("Nome: ");
@@ -65,7 +21,7 @@ public class Main {
         System.out.print("Idade: ");
         int idade = scanner.nextInt();
         scanner.nextLine();
-        System.out.print("Endereço: ");
+        System.out.print("Endereço(Bairro, Rua, Número): ");
         String endereco = scanner.nextLine();
 
         Tutor tutor = new Tutor(nome, cpf, email, telefone, idade, endereco, new ArrayList<>(), new ArrayList<>());
@@ -85,6 +41,8 @@ public class Main {
         
         System.out.print("Nome: ");
         pet.setNome(scanner.nextLine());
+        System.out.print("Espécie: ");
+        pet.setEspecie(scanner.nextLine());
         System.out.print("Raça: ");
         pet.setRaca(scanner.nextLine());
         
@@ -169,10 +127,11 @@ public class Main {
         }
         for (Pet pet : pets) {
             System.out.println("Nome: " + pet.getNome());
+            System.out.println("Raça: " + pet.getRaca());
+            System.out.println("Espécie: " + pet.getEspecie());
             System.out.println("Idade: " + pet.getIdade());
             System.out.println("Peso: " + pet.getPeso());
             System.out.println("Sexo: " + pet.getSexo());
-            System.out.println("Raça: " + pet.getRaca());
             System.out.println("Tutor: " + (pet.getTutor() != null ? pet.getTutor().getNome() : "Sem tutor"));
             boolean temServico = false;
             for (Servico servico : servicos) {
@@ -298,4 +257,46 @@ public class Main {
         System.out.println("\033\143");
 
   }
+
+    public static void main(String[] args) {
+        int opcao;
+        do {
+            mensagemInicial();
+
+            opcao = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (opcao) {
+                case 1:
+                    cadastrarTutor();
+                    break;
+                case 2:
+                    cadastrarPet();
+                    break;
+                case 3:
+                    cadastrarServico();
+                    break;
+                case 4:
+                    listarTutores();
+                    break;
+                case 5:
+                    listarPets();
+                    break;
+                case 6:
+                    limparTela();
+                    listarServicos();
+                    break;
+                case 7:
+                    agendarServico();
+                    break;
+                case 0:
+                    System.out.println("Obrigado por utilizar nosso sistema!");
+                    break;
+                default:
+                    System.out.println("Opção inválida!");
+            }
+        } while (opcao != 0);
+        
+        scanner.close();
+    }
 }

@@ -1,10 +1,9 @@
-package DebugPet;
-
 import java.util.ArrayList;
 
 public class Pet {
     private String nome;
     private String raca;
+    private String especie;
     private String sexo;
     private String idade;
     private double peso;
@@ -69,6 +68,14 @@ public class Pet {
 
     public void setServico(ArrayList<Servico> servico) {
         this.servico = servico;
+    }
+
+    public String getEspecie() {
+        return especie;
+    }
+
+    public void setEspecie(String especie) {
+        this.especie = especie;
     }
 
 }
