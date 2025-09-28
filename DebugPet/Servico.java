@@ -3,9 +3,11 @@ public class Servico {
     private String descricao;
     private double valor;
     private String data;
+    // Colocar Local Date
 
     public Servico(){
     }
+    // Criar Construtor De Servicos, Passando Serviços Basicos
 
     public Pet getPet() {
         return pet;
