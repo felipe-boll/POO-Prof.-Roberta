@@ -242,13 +242,13 @@ public class Main {
         pet.getTutor().addServico(servico);
 
         System.out.print("Informe a data para agendar (formato: dd/mm/aaaa): ");
-        String dataStr = scanner.nextLine();
+        String data = scanner.nextLine();
         try {
-            String[] partes = dataStr.split("/");
+            String[] partes = data.split("/");
             int dia = Integer.parseInt(partes[0]);
             int mes = Integer.parseInt(partes[1]);
             int ano = Integer.parseInt(partes[2]);
-            servico.setData(LocalDate.of(ano, mes, dia));
+            servico.setData(LocalDate.of(dia, mes, ano));
         } catch (Exception e) {
             System.out.println("Data inválida! O serviço será agendado para hoje.");
             servico.setData(LocalDate.now());
