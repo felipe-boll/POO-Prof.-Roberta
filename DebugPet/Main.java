@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.time.LocalDate;
 
+// scanner.nextLine() solto no meio do codigo é pra limpar o buffer
 public class Main {
     private static ArrayList<Tutor> tutores = new ArrayList<>();
     private static ArrayList<Pet> pets = new ArrayList<>();
