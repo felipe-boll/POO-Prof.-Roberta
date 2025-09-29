@@ -4,29 +4,30 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.time.LocalDate;
 
-// scanner.nextLine() solto no meio do codigo é pra limpar o buffer
+// Este repositorio tem poucos commits porque eu fiz todo o codigo em outro repositorio e entao passei pra ca, só dando alguns toques finais
+// tecladoScanner.nextLine() solto no meio do codigo é pra limpar o buffer
 public class Main {
     private static ArrayList<Tutor> tutores = new ArrayList<>();
     private static ArrayList<Pet> pets = new ArrayList<>();
     private static ArrayList<Servico> servicos = new ArrayList<>();
-    private static Scanner scanner = new Scanner(System.in);
+    private static Scanner tecladoScanner = new Scanner(System.in);
 
      private static void cadastrarTutor() {
         limparTela();
         System.out.println("\n=== Cadastro de Tutor ===");
         System.out.print("Nome: ");
-        String nome = scanner.nextLine();
+        String nome = tecladoScanner.nextLine();
         System.out.print("CPF: ");
-        String cpf = scanner.nextLine();
+        String cpf = tecladoScanner.nextLine();
         System.out.print("Email: ");
-        String email = scanner.nextLine();
+        String email = tecladoScanner.nextLine();
         System.out.print("Telefone: ");
-        String telefone = scanner.nextLine();
+        String telefone = tecladoScanner.nextLine();
         System.out.print("Idade: ");
-        int idade = scanner.nextInt();
-        scanner.nextLine();
+        int idade = tecladoScanner.nextInt();
+        tecladoScanner.nextLine();
         System.out.print("Endereço(Bairro, Rua Número): ");
-        String endereco = scanner.nextLine();
+        String endereco = tecladoScanner.nextLine();
 
         Tutor tutor = new Tutor(nome, cpf, email, telefone, idade, endereco, new ArrayList<>(), new ArrayList<>());
         tutores.add(tutor);
@@ -44,16 +45,16 @@ public class Main {
         Pet pet = new Pet();
         
         System.out.print("Nome: ");
-        pet.setNome(scanner.nextLine());
+        pet.setNome(tecladoScanner.nextLine());
         System.out.print("Espécie: ");
-        pet.setEspecie(scanner.nextLine());
+        pet.setEspecie(tecladoScanner.nextLine());
         System.out.print("Raça: ");
-        pet.setRaca(scanner.nextLine());
+        pet.setRaca(tecladoScanner.nextLine());
         
         String sexo;
         do {
             System.out.print("Sexo (M/F): ");
-            sexo = scanner.nextLine().toUpperCase();
+            sexo = tecladoScanner.nextLine().toUpperCase();
             if (!sexo.equals("M") && !sexo.equals("F")) {
                 System.out.println("Por favor, digite M para masculino ou F para feminino.");
             }
@@ -61,18 +62,18 @@ public class Main {
         pet.setSexo(sexo);
 
         System.out.print("Idade: ");
-        pet.setIdade(scanner.nextLine());
+        pet.setIdade(tecladoScanner.nextLine());
         System.out.print("Peso: ");
-        pet.setPeso(scanner.nextDouble());
-        scanner.nextLine();
+        pet.setPeso(tecladoScanner.nextDouble());
+        tecladoScanner.nextLine();
 
         System.out.println("\nTutores disponíveis:");
         for (int i = 0; i < tutores.size(); i++) {
             System.out.println(i + " - " + tutores.get(i).getNome());
         }
         System.out.print("Selecione o tutor (número): ");
-        int tutorIndex = scanner.nextInt();
-        scanner.nextLine();
+        int tutorIndex = tecladoScanner.nextInt();
+        tecladoScanner.nextLine();
 
         while (true) {
             if (tutorIndex >= 0 && tutorIndex < tutores.size()) {
@@ -85,8 +86,8 @@ public class Main {
             } else {
                 System.out.println("Tutor inválido! Tente novamente.");
                 System.out.print("Selecione o tutor (número): ");
-                tutorIndex = scanner.nextInt();
-                scanner.nextLine();
+                tutorIndex = tecladoScanner.nextInt();
+                tecladoScanner.nextLine();
             }
         }
     }
@@ -104,10 +105,10 @@ public class Main {
         limparTela();    
         System.out.println("\n=== Cadastro de Serviço ===");
         System.out.print("Descrição do serviço: ");
-        String descricao = scanner.nextLine();
+        String descricao = tecladoScanner.nextLine();
         System.out.print("Valor do serviço: ");
-        double valor = scanner.nextDouble();
-        scanner.nextLine();
+        double valor = tecladoScanner.nextDouble();
+        tecladoScanner.nextLine();
 
         servicos.add(new Servico(null, descricao, valor, LocalDate.now()));
     }
@@ -193,8 +194,8 @@ public class Main {
         }
 
         System.out.print("Selecione o pet (número): ");
-        int petIndex = scanner.nextInt();
-        scanner.nextLine();
+        int petIndex = tecladoScanner.nextInt();
+        tecladoScanner.nextLine();
 
         while (true) {
             if (petIndex >= 0 && petIndex < pets.size()) {
@@ -209,8 +210,8 @@ public class Main {
                 }
 
                 System.out.print("Selecione o pet (número): ");
-                petIndex = scanner.nextInt();
-                scanner.nextLine();
+                petIndex = tecladoScanner.nextInt();
+                tecladoScanner.nextLine();
             }
         }
         
@@ -221,8 +222,8 @@ public class Main {
         listarServicos();
         System.out.print("Selecione o serviço (número): ");
             
-        servicoIndex = scanner.nextInt();
-        scanner.nextLine();
+        servicoIndex = tecladoScanner.nextInt();
+        tecladoScanner.nextLine();
                 
         while (true) {
             if (servicoIndex >= 0 && servicoIndex < servicos.size()) {
@@ -232,8 +233,8 @@ public class Main {
                 System.out.println("\nServiços disponíveis:");
                 listarServicos();
                 System.out.print("Selecione o serviço (número): ");
-                servicoIndex = scanner.nextInt();
-                scanner.nextLine();
+                servicoIndex = tecladoScanner.nextInt();
+                tecladoScanner.nextLine();
             }
         }
 
@@ -243,7 +244,7 @@ public class Main {
         pet.getTutor().addServico(servico);
 
         System.out.print("Informe a data para agendar (formato: dd/mm/aaaa): ");
-        String data = scanner.nextLine();
+        String data = tecladoScanner.nextLine();
         try {
             String[] partes = data.split("/");
             int dia = Integer.parseInt(partes[0]);
@@ -286,8 +287,8 @@ public class Main {
         do {
             mensagemInicial();
 
-            opcao = scanner.nextInt();
-            scanner.nextLine();
+            opcao = tecladoScanner.nextInt();
+            tecladoScanner.nextLine();
 
             switch (opcao) {
                 case 1:
@@ -320,6 +321,6 @@ public class Main {
             }
         } while (opcao != 0);
         
-        scanner.close();
+        tecladoScanner.close();
     }
 }
