@@ -248,7 +248,7 @@ public class Main {
             int dia = Integer.parseInt(partes[0]);
             int mes = Integer.parseInt(partes[1]);
             int ano = Integer.parseInt(partes[2]);
-            servico.setData(LocalDate.of(dia, mes, ano));
+            servico.setData(LocalDate.of(ano, mes, dia));
         } catch (Exception e) {
             System.out.println("Data inválida! O serviço será agendado para hoje.");
             servico.setData(LocalDate.now());
